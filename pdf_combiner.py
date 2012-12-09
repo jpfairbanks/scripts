@@ -1,6 +1,6 @@
 from pyPdf import PdfFileWriter, PdfFileReader
 from os import listdir
-
+#if the execution fails, then you must manually remove the file that it created.
 CENTRAL_PRINTING_LIMIT = 200
 PREFIX_STR = "output-doc"
 def prefix_sum(l):
@@ -25,10 +25,10 @@ def consume_files(filelist):
     i = 0
     while (len(filelist) > 0):
         output = PdfFileWriter()
-        outputstream = file(PREFIX_STR+str(i)+'.pdf', 'wb')
-        i = i + 1
         merge_pages_better(output, filelist)
+        outputstream = file(PREFIX_STR+str(i)+'.pdf', 'wb')
         print "%s%d.pdf has %d pages" % (PREFIX_STR, i-1, output.getNumPages())
+        i = i + 1
         output.write(outputstream)
         outputstream.close()
     return 1
