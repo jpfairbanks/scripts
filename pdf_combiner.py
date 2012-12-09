@@ -27,7 +27,7 @@ def consume_files(filelist):
         output = PdfFileWriter()
         merge_pages_better(output, filelist)
         outputstream = file(PREFIX_STR+str(i)+'.pdf', 'wb')
-        print "%s%d.pdf has %d pages" % (PREFIX_STR, i-1, output.getNumPages())
+        print "%s%d.pdf has %d pages" % (PREFIX_STR, i, output.getNumPages())
         i = i + 1
         output.write(outputstream)
         outputstream.close()
